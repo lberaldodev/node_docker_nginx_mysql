@@ -1,6 +1,22 @@
 version: '3'
 
 services:
+
+  server:
+    build:
+      #dockerfile location 
+      context: server
+    container_name: server
+    networks:
+      - node-network
+    volumes: 
+      - ./server:/var/www/node
+    tty: true
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+
   db:
     #fix to mac m1
     platform: linux/x86_64
