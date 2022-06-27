@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    #fix to mac m1
+    platform: linux/x86_64
+    image: mysql:5.7
+
+    # this is a fix to mysql on docker
+    command: --innodb-use-native-aio=0
+    container_name: db
+    restart: always
+    tty: true
+    
+    #copy mysqldata from container to local volume
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - node-network
+
+networks:
+  node-network:
+    driver: bridge
+    
