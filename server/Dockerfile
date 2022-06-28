@@ -1,12 +1,13 @@
 FROM node:current-alpine3.16
 
+RUN apk update
+
 WORKDIR /var/www/node
 
-COPY . .
-
-RUN apk update && \
-    apk add
+COPY package*.json ./
 
 RUN yarn
+
+COPY . .
 
 CMD [ "yarn", "start"]

@@ -21,6 +21,7 @@ services:
       - node-network
     volumes: 
       - ./server:/var/www/node
+      - /var/www/node/node_modules
     tty: true
     ports:
       - "3000:3000"
@@ -49,4 +50,3 @@ services:
 networks:
   node-network:
     driver: bridge
-    
