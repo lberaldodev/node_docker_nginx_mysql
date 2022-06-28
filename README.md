@@ -27,7 +27,7 @@ docker-compose up --build
 ## After all containers running execute the mysqldump to create the first table
 
 ```sh
-docker exec db /usr/bin/mysqldump -u <DB_USER(root by default)> --password=<MYSQL_ROOT_PASSWORD> <MYSQL_DATABASE> > backup.sql
+cat backup.sql | docker exec -i db /usr/bin/mysql -u <DB_USER (root as default)> --password=<MYSQL_ROOT_PASSWORD> <MYSQL_DATABASE>
 ```
 
 ## Open your browser
