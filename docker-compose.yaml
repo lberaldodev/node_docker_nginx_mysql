@@ -1,6 +1,17 @@
 version: '3'
 
 services:
+  nginx:
+    build:
+      context: nginx
+    container_name: nginx
+    networks:
+      - node-network
+    ports:
+      - "8080:80"
+    depends_on:
+      - server
+
   server:
     build:
       #dockerfile location 
