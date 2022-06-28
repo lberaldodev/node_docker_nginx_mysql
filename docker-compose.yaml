@@ -1,7 +1,6 @@
 version: '3'
 
 services:
-
   server:
     build:
       #dockerfile location 
@@ -14,8 +13,9 @@ services:
     tty: true
     ports:
       - "3000:3000"
-    environment:
-      - PORT=3000
+    env_file: ./server/.env
+    depends_on:
+      - db
 
   db:
     #fix to mac m1
@@ -31,9 +31,7 @@ services:
     #copy mysqldata from container to local volume
     volumes:
       - ./mysql:/var/lib/mysql
-    environment:
-      - MYSQL_DATABASE=nodedb
-      - MYSQL_ROOT_PASSWORD=root
+    env_file: ./.env.mysql
     networks:
       - node-network
 
