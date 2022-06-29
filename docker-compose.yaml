@@ -25,7 +25,7 @@ services:
     tty: true
     ports:
       - "3000:3000"
-    env_file: ./server/.env
+    env_file: ./.env
     depends_on:
       - db
 
@@ -43,7 +43,7 @@ services:
     #copy mysqldata from container to local volume
     volumes:
       - ./mysql:/var/lib/mysql
-    env_file: ./.env.mysql
+    env_file: ./.env
     networks:
       - node-network
 
