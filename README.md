@@ -13,15 +13,15 @@
 
 ### 🏠 [Homepage](https://github.com/lberaldodev/node_docker_nginx_mysql)
 
-## Setup the envs (check the examples)
+## Setup the .env in root folder (check the .env.example)
 ```sh
-.env and .env.mysql
+.env
 ```
 
 ## Build the containers
 
 ```sh
-docker-compose up --build
+docker-compose up --build -d
 ```
 
 ## After all containers running execute the mysqldump to create the first table
