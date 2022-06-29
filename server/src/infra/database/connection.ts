@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+import mysql from "mysql";
 
 const connection = mysql.createConnection({
   host     : process.env.DB_HOST,
@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
   password : process.env.DB_PASSWORD,
   database : process.env.DB_DATABASE
 });
- 
-module.exports = {
+
+export {
   connection
-}
+};
