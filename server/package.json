@@ -4,7 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start-dev": "nodemon --watch 'src/' --exec 'ts-node src/server.ts' -e ts",
+    "build-ts": "tsc",
+    "build": "yarn build-ts && yarn lint",
+    "lint": "tsc --noEmit && yarn eslint \"**/*.{js,ts}\" --quiet --fix",
+    "serve": "node dist/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +18,14 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.18"
+    "@types/eslint": "7.2.6",
+    "@types/express": "4.17.11",
+    "@types/mysql": "^2.3.0",
+    "@typescript-eslint/eslint-plugin": "4.14.2",
+    "@typescript-eslint/parser": "4.14.2",
+    "nodemon": "^2.0.18",
+    "eslint": "7.19.0",
+    "ts-node": "9.1.1",
+    "typescript": "4.1.3"
   }
 }
