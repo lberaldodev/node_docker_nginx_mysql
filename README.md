@@ -27,8 +27,6 @@ docker-compose up --build -d
 ## After all containers running execute the mysqldump to create the first table
 
 ```sh
-cat backup.sql | docker exec -i db /usr/bin/mysql -u <DB_USER (root as default)> --password=<MYSQL_ROOT_PASSWORD> <MYSQL_DATABASE>
-
 cat backup.sql | docker exec -i db /usr/bin/mysql -u root --password=root nodedb
 ```
 
