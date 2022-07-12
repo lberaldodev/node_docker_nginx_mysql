@@ -14,9 +14,9 @@ class FindAllPeoples {
     this.repository = repository;
   }
 
-  async execute(): Promise<PeopleModel[]> {
+  execute = async (): Promise<PeopleModel[]> => {
     return await this.repository.getAll();
-  }
+  };
 }
 
 export { FindAllPeoples };
