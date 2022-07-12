@@ -7,9 +7,9 @@ import { PeopleController } from "../../controllers/peoples";
 
 const router = Router();
 
-const peopleRepository = new PeopleRepository({connection: connection});
-const useCase = new FindAllPeoples({repository: peopleRepository});
-const controller = new PeopleController({findAllPeoples: useCase});
+const peopleRepository = new PeopleRepository({ connection: connection });
+const useCase = new FindAllPeoples({ repository: peopleRepository });
+const controller = new PeopleController({ findAllPeoples: useCase });
 
 router.get("/", controller.index);
 

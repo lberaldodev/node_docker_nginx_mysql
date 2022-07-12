@@ -3,29 +3,32 @@ import mysql from "mysql";
 import { PeopleModel, TPeople } from "../../domain/models/People";
 
 type Dependencies = {
-    connection: mysql.Connection
-}
+  connection: mysql.Connection;
+};
 
 class PeopleRepository implements IPeopleRepository {
-    readonly connection: mysql.Connection;
-   
-    constructor({ connection }: Dependencies ) {
-      this.connection = connection;
-    }
+  readonly connection: mysql.Connection;
 
-    getAll = async (): Promise<PeopleModel[]> => {
-        return new Promise((resolve, reject) => {
-            this.connection.query("SELECT * from people", (err, results: TPeople[]) => {
-              if (err) {
-                return reject(err);
-              }
-              const peoples = results.map(i => new PeopleModel({ id: i.id, name: i.name }));
-              return resolve(peoples);
-            });
-          });
-    }
+  constructor({ connection }: Dependencies) {
+    this.connection = connection;
+  }
+
+  getAll = async (): Promise<PeopleModel[]> => {
+    return new Promise((resolve, reject) => {
+      this.connection.query(
+        "SELECT * from people",
+        (err, results: TPeople[]) => {
+          if (err) {
+            return reject(err);
+          }
+          const peoples = results.map(
+            (i) => new PeopleModel({ id: i.id, name: i.name })
+          );
+          return resolve(peoples);
+        }
+      );
+    });
+  };
 }
-   
-export {
-    PeopleRepository
-};
+
+export { PeopleRepository };

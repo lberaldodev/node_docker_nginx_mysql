@@ -5,13 +5,12 @@ type TFindAllPeoples = FindAllPeoples;
 
 type Dependencies = {
   repository: IPeopleRepository;
-}
+};
 
 class FindAllPeoples {
-
   readonly repository: IPeopleRepository;
 
-  constructor({repository}: Dependencies) {
+  constructor({ repository }: Dependencies) {
     this.repository = repository;
   }
 
@@ -20,10 +19,6 @@ class FindAllPeoples {
   }
 }
 
-export {
-  FindAllPeoples
-};
+export { FindAllPeoples };
 
-export type {
-  TFindAllPeoples
-};
+export type { TFindAllPeoples };

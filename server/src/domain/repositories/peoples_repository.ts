@@ -1,9 +1,7 @@
 import { PeopleModel } from "../models/People";
 
 interface IPeopleRepository {
-    getAll(): Promise<PeopleModel[]>;
+  getAll(): Promise<PeopleModel[]>;
 }
 
-export {
-    IPeopleRepository
-};
+export { IPeopleRepository };
