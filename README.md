@@ -14,6 +14,7 @@
 ### 🏠 [Homepage](https://github.com/lberaldodev/node_docker_nginx_mysql)
 
 ## Setup the .env in root folder (check the .env.example)
+
 ```sh
 .env
 ```
@@ -36,21 +37,22 @@ cat backup.sql | docker exec -i db /usr/bin/mysql -u root --password=root nodedb
 http://localhost:8080
 ```
 
-## Create a new register in database
+## List all registers in database
 
 ```sh
-http://localhost:8080?name=Example
+http://localhost:3000/v1/peoples
 ```
 
 ## Author
 
 👤 **Lucas da Silva Beraldo**
 
-* Github: [@lberaldodev](https://github.com/lberaldodev)
+- Github: [@lberaldodev](https://github.com/lberaldodev)
 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
 
-***
+---
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
