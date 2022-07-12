@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start-dev": "nodemon --watch 'src/' --exec 'ts-node src/application/server.ts' -e ts",
+    "start-dev": "nodemon --watch 'src/' --exec 'ts-node src/infra/server/index.ts' -e ts",
     "build-ts": "tsc",
     "build": "yarn build-ts && yarn lint",
     "lint": "tsc --noEmit && yarn eslint \"**/*.{js,ts}\" --quiet --fix",
