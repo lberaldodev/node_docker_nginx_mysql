@@ -1,6 +1,6 @@
-FROM node:current-alpine3.16
+FROM node:lts
 
-RUN apk update
+RUN apt-get update && apt-get upgrade
 
 RUN mkdir -p /usr/src/app
 
