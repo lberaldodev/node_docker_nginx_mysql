@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to Nodejs with Docker 👋</h1>
+<h1 align="center">Nodejs, Typescript, Mysql, PrismaORM, Clean Architecture, Docker - Application - </h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/lberaldodev/node_docker_nginx_mysql/blob/master/README.md" target="_blank">
@@ -9,7 +9,7 @@
   </a>
 </p>
 
-> Simple NodeJS example with nginx to proxy redirect (by default port 3000 to 8080) and MySQL
+> Simple nodejs example with typescript, mysql, typeorm and clean architecture, using docker with docker-compose to build the containers, nginx to proxy redirect (by default port 3000 to 8080).
 
 ### 🏠 [Homepage](https://github.com/lberaldodev/node_docker_nginx_mysql)
 
