@@ -25,10 +25,11 @@
 docker-compose up --build -d
 ```
 
-## After all containers running execute the mysqldump to create the first table
+## After all containers running execute the migration to create the first table
 
 ```sh
-cat backup.sql | docker exec -i db /usr/bin/mysql -u root --password=root nodedb
+cd server/
+npx prisma migrate dev --schema=./src/infra/database/prisma/schema.prisma
 ```
 
 ## Open your browser
@@ -40,7 +41,7 @@ http://localhost:8080
 ## List all registers in database
 
 ```sh
-http://localhost:3000/v1/peoples
+http://localhost:8080/v1/peoples
 ```
 
 ## Author
