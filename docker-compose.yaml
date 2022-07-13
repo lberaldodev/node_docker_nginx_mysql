@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   nginx:
@@ -14,12 +14,12 @@ services:
 
   server:
     build:
-      #dockerfile location 
+      #dockerfile location
       context: server
     container_name: server
     networks:
       - node-network
-    volumes: 
+    volumes:
       - ./server:/usr/src/app
       - /usr/src/app/node_modules
     env_file:
@@ -40,7 +40,7 @@ services:
     container_name: db
     restart: always
     tty: true
-    
+
     #copy mysqldata from container to local volume
     volumes:
       - ./mysql:/var/lib/mysql
@@ -48,6 +48,8 @@ services:
       - .env
     networks:
       - node-network
+    ports:
+      - 3306:3306
 
 networks:
   node-network:
