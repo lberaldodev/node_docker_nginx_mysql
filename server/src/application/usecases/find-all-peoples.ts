@@ -1,24 +1,22 @@
+import { inject, injectable } from "inversify";
+import { TYPES } from "../../infra/di/types";
 import { PeopleModel } from "../../domain/models/People";
 import { IPeopleRepository } from "../../domain/repositories/peoples_repository";
 
-type TFindAllPeoples = FindAllPeoples;
+type TFindAllPeoplesUseCase = FindAllPeoplesUseCase;
 
-type Dependencies = {
-  repository: IPeopleRepository;
-};
-
-class FindAllPeoples {
-  readonly repository: IPeopleRepository;
-
-  constructor({ repository }: Dependencies) {
-    this.repository = repository;
-  }
+@injectable()
+class FindAllPeoplesUseCase {
+  constructor(
+    @inject(TYPES.PeopleRepository)
+    private peopleRepository: IPeopleRepository
+  ) {}
 
   execute = async (): Promise<PeopleModel[]> => {
-    return await this.repository.getAll();
+    return await this.peopleRepository.getAll();
   };
 }
 
-export { FindAllPeoples };
+export { FindAllPeoplesUseCase };
 
-export type { TFindAllPeoples };
+export type { TFindAllPeoplesUseCase };

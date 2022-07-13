@@ -1,27 +1,25 @@
-import { FindAllPeoples } from "../../../application/usecases/find-all-peoples";
+import { FindAllPeoplesUseCase } from "../../../application/usecases/find-all-peoples";
 import { Request, Response } from "express";
 import { PeopleModel } from "../../../domain/models/People";
+import { injectable, inject } from "inversify";
+import { TYPES } from "../../../infra/di/types";
 
-interface IPeopleController {
+export interface IPeopleController {
   index: (req: Request, res: Response) => void;
 }
 
-type Dependencies = {
-  findAllPeoples: FindAllPeoples;
-};
-
+@injectable()
 class PeopleController implements IPeopleController {
-  readonly dependencies: Dependencies;
-
-  constructor(dependencies: Dependencies) {
-    this.dependencies = dependencies;
-  }
+  constructor(
+    @inject(TYPES.FindAllPeoplesUseCase)
+    private findAllPeoplesUseCase: FindAllPeoplesUseCase
+  ) {}
 
   index = async (
     _req: Request,
     res: Response
   ): Promise<Response<PeopleModel[]>> => {
-    const peoples = await this.dependencies.findAllPeoples.execute();
+    const peoples = await this.findAllPeoplesUseCase.execute();
     return res.send(peoples);
   };
 }

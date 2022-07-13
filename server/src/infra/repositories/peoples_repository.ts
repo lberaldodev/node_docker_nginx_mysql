@@ -1,21 +1,18 @@
 import { IPeopleRepository } from "../../domain/repositories/peoples_repository";
-import mysql from "mysql";
-import { PeopleModel, TPeople } from "../../domain/models/People";
+import { PeopleModel } from "../../domain/models/People";
 import { PrismaClient } from "@prisma/client";
+import { inject, injectable } from "inversify";
+import { TYPES } from "../di/types";
 
-type Dependencies = {
-  connection: PrismaClient;
-};
-
+@injectable()
 class PeopleRepository implements IPeopleRepository {
-  readonly connection: PrismaClient;
-
-  constructor({ connection }: Dependencies) {
-    this.connection = connection;
-  }
+  constructor(
+    @inject(TYPES.DbConnection)
+    private dbConnection: PrismaClient
+  ) {}
 
   getAll = async (): Promise<PeopleModel[]> => {
-    const peoples = await this.connection.peoples.findMany();
+    const peoples = await this.dbConnection.peoples.findMany();
     return peoples.map((i) => new PeopleModel({ id: i.id, name: i.name }));
   };
 }
