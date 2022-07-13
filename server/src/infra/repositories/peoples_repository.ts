@@ -1,33 +1,22 @@
 import { IPeopleRepository } from "../../domain/repositories/peoples_repository";
 import mysql from "mysql";
 import { PeopleModel, TPeople } from "../../domain/models/People";
+import { PrismaClient } from "@prisma/client";
 
 type Dependencies = {
-  connection: mysql.Connection;
+  connection: PrismaClient;
 };
 
 class PeopleRepository implements IPeopleRepository {
-  readonly connection: mysql.Connection;
+  readonly connection: PrismaClient;
 
   constructor({ connection }: Dependencies) {
     this.connection = connection;
   }
 
   getAll = async (): Promise<PeopleModel[]> => {
-    return new Promise((resolve, reject) => {
-      this.connection.query(
-        "SELECT * from people",
-        (err, results: TPeople[]) => {
-          if (err) {
-            return reject(err);
-          }
-          const peoples = results.map(
-            (i) => new PeopleModel({ id: i.id, name: i.name })
-          );
-          return resolve(peoples);
-        }
-      );
-    });
+    const peoples = await this.connection.peoples.findMany();
+    return peoples.map((i) => new PeopleModel({ id: i.id, name: i.name }));
   };
 }
 

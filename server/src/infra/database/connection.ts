@@ -1,10 +1,5 @@
-import mysql from "mysql";
+import { PrismaClient } from "@prisma/client";
 
-const connection = mysql.createConnection({
-  host: process.env.SERVER_DB_HOST,
-  user: process.env.SERVER_DB_USER,
-  password: process.env.SERVER_DB_PASSWORD,
-  database: process.env.SERVER_DB_DATABASE,
-});
+const connection = new PrismaClient();
 
 export { connection };
