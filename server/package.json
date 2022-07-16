@@ -9,7 +9,8 @@
     "build-ts": "tsc",
     "build": "yarn build-ts && yarn lint",
     "lint": "tsc --noEmit && yarn eslint \"**/*.{js,ts}\" --quiet --fix",
-    "serve": "node dist/server.js"
+    "serve": "node dist/server.js",
+    "swagger-autogen": "node ./swagger.js"
   },
   "author": "",
   "license": "ISC",
@@ -31,6 +32,8 @@
     "nodemon": "^2.0.18",
     "prettier": "^2.3.2",
     "prisma": "^4.0.0",
+    "swagger-autogen": "^2.21.5",
+    "swagger-ui-express": "^4.5.0",
     "ts-node": "9.1.1",
     "typescript": "4.4.4"
   }
