@@ -7,6 +7,9 @@ const peopleRouter = Router();
 
 peopleRouter.get(
   "/",
+  // #swagger.operationId = 'getPeoples'
+  // #swagger.tags = ['Peoples']
+  // #swagger.description = 'Endpoint to get all peoples from database'
   container.get<IPeopleController>(TYPES.PeopleController).index
 );
 
